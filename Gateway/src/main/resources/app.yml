@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: r2 # Route 2 for products
+          uri: http://localhost:8082/ # Target URI for this route
+          predicates:
+            - Path=/products/**
+      globalcors:
+        corsConfigurations:
+          '[/**]': # Allow CORS for all paths
+            allowedOrigins: "http://localhost:4200"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
